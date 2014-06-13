@@ -6,113 +6,69 @@
     <script type="text/javascript" src="js/gmap3.js"></script>
     <script type="text/javascript" src="js/mcdo.js"></script> 
     <script type="text/javascript" src="js/engerau.js"></script> 
-    <style>
-    #map {
-      height: 90%;
-      width: 100%;
+    <link rel="stylesheet" href="css/engerau.css"/>
+    <script type="text/javascript">
+      var mapdef = {
+      map:{
+      options:{
+      center: [48.1152333,17.1110833],
+      zoom: 13,
+      zoomControl: true,
+      zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL},
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     }
+  }
+};
 
-    #mnu_container { 
-      display: block; 
-      position: absolute; 
-      top: 200px; 
-      right:20px;
-      width: 200px; 
-      height: 150px; 
-      border: 1px solid #000; 
-      background-color: #9e9696; 
-      z-index: 1010; 
-      opacity:0.9; 
-      filter:alpha(opacity=90); 
-      -moz-border-bottom-left-radius:5px; 
-      -webkit-border-bottom-left-radius:5px; 
-      border-bottom-left-radius:5px; 
-      -moz-border-top-left-radius:5px; 
-      -webkit-border-top-left-radius:5px; 
-      border-top-left-radius:5px; 
-      font-family: Verdana, Helvetica, Sans-Serif; font-size: 14px; color: #fff; 
-    } 
-       /* #mnu_switcher { 
-          position: relative; 
-          float:left; 
-          }  */
-          #mnu_switcher a { 
-            color: #fff; 
-            text-decoration:none; 
-          } 
-          #mnu_title { 
-            background-color:#797979; 
-            padding-left:10px; 
-            line-height: 26px; 
-            font-size:1.1em; 
-            font-style: italic; 
-          } 
-          #mnu_links { 
-            padding:10px; 
-          }
-          </style>
-          <script type="text/javascript">
-          var mapdef = {
-           map:{
-            options:{
-              center: [48.1152333,17.1110833],
-              zoom: 13,
-              zoomControl: true,
-              zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL},
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-          }
-        };
+// var pink_data = pink;
 
-        // var pink_data = pink;
-        
 
-        $(function(){
-          $("#map").gmap3(mapdef);
-          $("#map").gmap3(pink);
-          $("#map").gmap3(red);
-          $("#map").gmap3(green);
-          $("#map").gmap3(yellow);
-          $("#map").gmap3(blue);
+$(function(){
+  $("#map").gmap3(mapdef);
+  $("#map").gmap3(pink);
+  $("#map").gmap3(red);
+  $("#map").gmap3(green);
+  $("#map").gmap3(yellow);
+  $("#map").gmap3(blue);
 
-    });
+});
 
-        $( document ).ready(function(){
-          // select all checkboxes at startup
-          $(":checkbox").prop('checked', true);
+$( document ).ready(function(){
+  // select all checkboxes at startup
+  $(":checkbox").prop('checked', true);
 
-          $(":checkbox").change(function(){
-            console.log("checkbox changed: " + this.value );
-            console.log("checkbox checked: " + this.checked );
+  $(":checkbox").change(function(){
+    console.log("checkbox changed: " + this.value );
+    console.log("checkbox checked: " + this.checked );
 
-            if(this.checked) {
-              $("#map").gmap3(eval(this.value));  // resolve variable name
-              console.log("display " + this.value);
-            } else {
-              console.log("clear " + this.value);
-              $("#map").gmap3({
-                clear: {
-                  name: "marker",
-                  tag: this.value
-                }
-              });
-            }
-            });
-        });
-          </script>  
-        </head>
-        <body>
-         <!-- <div id="header">http://gmap3.net/en/pages/5-getting-started/#installation-13</div> -->
-         <div id="map"></div>
-         <div id='mnu_container'>
-          <div id='mnu_title'>Legenda</div>
-          <div id='mnu_links'>
-            <div style="color: blue;"><input type="checkbox" name="category" value="blue">Historické budovy, pamiatky</div>
-            <div style="color: #62f765;"><input type="checkbox" name="category" value="green">Umelecké diela</div>
-            <div style="color: #f99090;"><input type="checkbox" name="category" value="red">Kuriozity</div>
-            <div style="color: #f6fc9c;"><input type="checkbox" name="category" value="yellow">Voľný čas</div>
-            <div style="color: #f8abfc;"><input type="checkbox" name="category" value="pink">Služby</div> 
-          </div>
-        </div>
-      </body>
-      </html>
+    if(this.checked) {
+      $("#map").gmap3(eval(this.value));  // resolve variable name
+      console.log("display " + this.value);
+    } else {
+      console.log("clear " + this.value);
+      $("#map").gmap3({
+        clear: {
+          name: "marker",
+          tag: this.value
+        }
+      });
+    }
+  });
+});
+</script>  
+</head>
+<body>
+  <!-- <div id="header">http://gmap3.net/en/pages/5-getting-started/#installation-13</div> -->
+  <div id="map"></div>
+  <div id='mnu_container'>
+    <div id='mnu_title'>Legenda</div>
+    <div id='mnu_links'>
+      <div style="color: blue;"><input type="checkbox" name="category" value="blue">Historické budovy, pamiatky</div>
+      <div style="color: #62f765;"><input type="checkbox" name="category" value="green">Umelecké diela</div>
+      <div style="color: #f99090;"><input type="checkbox" name="category" value="red">Kuriozity</div>
+      <div style="color: #f6fc9c;"><input type="checkbox" name="category" value="yellow">Voľný čas</div>
+      <div style="color: #f8abfc;"><input type="checkbox" name="category" value="pink">Služby</div> 
+    </div>
+  </div>
+</body>
+</html>
