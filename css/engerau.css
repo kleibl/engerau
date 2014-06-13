@@ -1,0 +1,43 @@
+#map {
+  height: 90%;
+  width: 100%;
+}
+
+#mnu_container { 
+  display: block; 
+  position: absolute; 
+  top: 200px; 
+  right:20px;
+  width: 200px; 
+  height: 150px; 
+  border: 1px solid #000; 
+  background-color: #9e9696; 
+  z-index: 1010; 
+  opacity:0.9; 
+  filter:alpha(opacity=90); 
+  -moz-border-bottom-left-radius:5px; 
+  -webkit-border-bottom-left-radius:5px; 
+  border-bottom-left-radius:5px; 
+  -moz-border-top-left-radius:5px; 
+  -webkit-border-top-left-radius:5px; 
+  border-top-left-radius:5px; 
+  font-family: Verdana, Helvetica, Sans-Serif; font-size: 14px; color: #fff; 
+} 
+/* #mnu_switcher { 
+position: relative; 
+float:left; 
+}  */
+#mnu_switcher a { 
+  color: #fff; 
+  text-decoration:none; 
+} 
+#mnu_title { 
+  background-color:#797979; 
+  padding-left:10px; 
+  line-height: 26px; 
+  font-size:1.1em; 
+  font-style: italic; 
+} 
+#mnu_links { 
+  padding:10px; 
+}
