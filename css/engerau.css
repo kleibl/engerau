@@ -11,10 +11,10 @@
   width: 200px; 
   height: 150px; 
   border: 1px solid #000; 
-  background-color: #F0EDE5; 
+  background-color: #FAF9F8; 
   z-index: 1010; 
   opacity:0.9; 
-  filter:alpha(opacity=90); 
+  filter:alpha(opacity=90);  
   -moz-border-bottom-left-radius:5px; 
   -webkit-border-bottom-left-radius:5px; 
   border-bottom-left-radius:5px; 
@@ -22,6 +22,8 @@
   -webkit-border-top-left-radius:5px; 
   border-top-left-radius:5px; 
   font-family: Verdana, Helvetica, Sans-Serif; font-size: 14px; color: #fff; 
+  text-shadow: 0.1em 0.1em 0.1em #797979;
+}
 } 
 /* #mnu_switcher { 
 position: relative; 
