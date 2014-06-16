@@ -30,7 +30,6 @@ $(function(){
   $("#map").gmap3(green);
   $("#map").gmap3(yellow);
   $("#map").gmap3(blue);
-
 });
 
 $( document ).ready(function(){
@@ -38,8 +37,8 @@ $( document ).ready(function(){
   $(":checkbox").prop('checked', true);
 
   $(":checkbox").change(function(){
-    console.log("checkbox changed: " + this.value );
-    console.log("checkbox checked: " + this.checked );
+  // console.log("checkbox changed: " + this.value );
+  // console.log("checkbox checked: " + this.checked );
 
     if(this.checked) {
       $("#map").gmap3(eval(this.value));  // resolve variable name
@@ -63,11 +62,11 @@ $( document ).ready(function(){
   <div id='mnu_container'>
     <div id='mnu_title'>Legenda</div>
     <div id='mnu_links'>
-      <div style="color: blue;"><input type="checkbox" name="category" value="blue">Historické budovy, pamiatky</div>
-      <div style="color: #62f765;"><input type="checkbox" name="category" value="green">Umelecké diela</div>
+      <div style="color: #6991FD;"><input type="checkbox" name="category" value="blue">Historické budovy, pamiatky</div>
+      <div style="color: #FD7567;"><input type="checkbox" name="category" value="green">Umelecké diela</div>
       <div style="color: #f99090;"><input type="checkbox" name="category" value="red">Kuriozity</div>
-      <div style="color: #f6fc9c;"><input type="checkbox" name="category" value="yellow">Voľný čas</div>
-      <div style="color: #f8abfc;"><input type="checkbox" name="category" value="pink">Služby</div> 
+      <div style="color: #FDF569;"><input type="checkbox" name="category" value="yellow">Voľný čas</div>
+      <div style="color: #E661AC;"><input type="checkbox" name="category" value="pink">Služby</div> 
     </div>
   </div>
 </body>

@@ -1,4 +1,4 @@
-var showHeaderWindow = function(_this, marker, event, context) {
+/* var showHeaderWindow = function(_this, marker, event, context) {
 	var map = $(_this).gmap3("get"),
 	infowindow = $(_this).gmap3({get:{name:"infowindow"}});
 	if (infowindow){
@@ -13,7 +13,7 @@ var showHeaderWindow = function(_this, marker, event, context) {
 			}
 		});
 	}
-};
+}; */
 
 var showFullWindow = function(_this, marker, event, context) {
 	var map = $(_this).gmap3("get"),
@@ -92,9 +92,9 @@ var pink = {
 			
 		}, 
 		events: {
-			mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
+			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
 			,
-			mouseout: function() { closeWindow(this); },
+			mouseout: function() { closeWindow(this); }, */
 			click: function(marker, event, context) { showFullWindow(this, marker, event, context); }
 		}
 	}
@@ -104,7 +104,7 @@ var red = {
 	marker: {
 		values:[
 		{latLng: [48.127106,17.116859], data: {name: "kábelová komora", desc: ""}},
-		{latLng: [48.109882,17.120583], data: {name: "chatky malý draždiak", desc: "<![CDATA[Text<br/><img src='http://www.bratislavaguide.com/images/main-current.jpg'/>]]>"}},
+		{latLng: [48.109882,17.120583], data: {name: "chatky malý draždiak", desc: ""}},
 		{latLng: [48.097332,17.106421], data: {name: "amfiteáter+ihrisko", desc: ""}},
 		{latLng: [48.103004,17.126162], data: {name: "zelené jazero", desc: ""}},
 		{latLng: [48.093124,17.109209], data: {name: "depo metra", desc: ""}},
@@ -120,7 +120,7 @@ var red = {
 		{latLng: [48.113613,17.091047], data: {name: "Kopčany", desc: ""}},
 		{latLng: [48.109238,17.131763], data: {name: "Ostrov Starý háj", desc: ""}},
 		{latLng: [48.126511,17.132233], data: {name: "Strom roka 2009 - topoľ čierny", desc: ""}},
-		{latLng: [48.111069,17.119940], data: {name: "Torzo pôvodného Chorvátskeho ramena", desc: ""}},
+		{latLng: [48.111069,17.119940], data: {name: "Torzo pôvodného Chorvátskeho ramena", desc: "dsklfj asdlf jaslkf jasl fjsalk jfskl"}},
 		{latLng: [48.110359,17.116421], data: {name: "lúka vďaky", desc: ""}}
 		],
 		tag: "red",
@@ -128,9 +128,9 @@ var red = {
 			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/red-dot.png")
 		}, 
 		events: {
-			mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
+			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
 			,
-			mouseout: function() { closeWindow(this); },
+			mouseout: function() { closeWindow(this); }, */
 			click: function(marker, event, context) { showFullWindow(this, marker, event, context); }
 		}
 	}
@@ -164,9 +164,9 @@ var blue = {
 			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/blue-dot.png")
 		}, 
 		events: {
-			mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
+			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
 			,
-			mouseout: function() { closeWindow(this); },
+			mouseout: function() { closeWindow(this); }, */
 			click: function(marker, event, context) { showFullWindow(this, marker, event, context); }
 		}
 	}
@@ -218,9 +218,9 @@ var green = {
 			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/green-dot.png")
 		}, 
 		events: {
-			mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
+			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
 			,
-			mouseout: function() { closeWindow(this); },
+			mouseout: function() { closeWindow(this); }, */
 			click: function(marker, event, context) { showFullWindow(this, marker, event, context); }
 		}
 	}
@@ -237,7 +237,7 @@ var yellow = {
 		{latLng: [48.132809,17.130388], data: {name: "???", desc: ""}},
 		{latLng: [48.128017,17.135904], data: {name: "parkur a kurty", desc: ""}},
 		{latLng: [48.119278,17.080114], data: {name: "motokrosová dráha", desc: ""}},
-		{latLng: [48.142151,17.066166], data: {name: "pláž", desc: ""}},
+		{latLng: [48.142151,17.066166], data: {name: "pláž", desc: "Text<br/><img src='http://www.bratislavaguide.com/images/main-current.jpg'/>"}},
 		{latLng: [48.092606,17.110519], data: {name: "futbalové ihrisko", desc: ""}},
 		{latLng: [48.119907,17.133223], data: {name: "štadión FC Petržalka 1898", desc: ""}},
 		{latLng: [48.123047,17.142836], data: {name: "pláž", desc: ""}},
@@ -264,9 +264,10 @@ var yellow = {
 			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png")
 		}, 
 		events: {
-			mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
+			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
 			,
-			mouseout: function() { closeWindow(this); }
+			mouseout: function() { closeWindow(this); }, */
+			click: function(marker, event, context) { showFullWindow(this, marker, event, context); }
 		}
 	}
 };
