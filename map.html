@@ -4,7 +4,6 @@
   	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
     <script type="text/javascript" src="js/gmap3.js"></script>
-    <script type="text/javascript" src="js/mcdo.js"></script> 
     <script type="text/javascript" src="js/engerau.js"></script> 
     <link rel="stylesheet" href="css/engerau.css"/>
     <script type="text/javascript">
@@ -62,12 +61,20 @@ $( document ).ready(function(){
   <div id='mnu_container'>
     <div id='mnu_title'>Legenda</div>
     <div id='mnu_links'>
-      <div style="color: #6991FD;"><input type="checkbox" name="category" value="blue">Historické budovy, pamiatky</div>
-      <div style="color: #FD7567;"><input type="checkbox" name="category" value="green">Umelecké diela</div>
-      <div style="color: #f99090;"><input type="checkbox" name="category" value="red">Kuriozity</div>
-      <div style="color: #FDF569;"><input type="checkbox" name="category" value="yellow">Voľný čas</div>
-      <div style="color: #E661AC;"><input type="checkbox" name="category" value="pink">Služby</div> 
+      <div><input type="checkbox" name="category" value="blue"><b style="color: #6991FD;">●</b> Historické budovy, pamiatky</div>
+      <div><input type="checkbox" name="category" value="green"><b style="color: #FD7567;">●</b> Umelecké diela</div>
+      <div><input type="checkbox" name="category" value="red"><b style="color: #f99090;">●</b> Kuriozity</div>
+      <div><input type="checkbox" name="category" value="yellow"><b style="color: #FDF569;">●</b> Voľný čas</div>
+      <div><input type="checkbox" name="category" value="pink"><b style="color: #E661AC;">●</b> Služby</div> 
+    </div>
+    <div id="search">
+      <!-- Search text box -->
+      <input id="search_input" data-toggle="dropdown" type="text" placeholder="Hľadaj" autofocus="autofocus" autocomplete="off" onkeyup="checkTextField();" />
+      <!-- Search results styled as a dropdown menu -->
+      <ul id="search_results" class="dropdown-menu" role="menu">
+      </ul>
     </div>
   </div>
+   
 </body>
 </html>

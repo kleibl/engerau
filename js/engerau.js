@@ -271,3 +271,126 @@ var yellow = {
 		}
 	}
 };
+
+/* Credits and kudos for search go to http://thornelabs.net/2014/05/12/instant-search-with-twitter-bootstrap-jekyll-json-and-jquery.html */
+
+function getSearchJSON()
+{
+     // console.log("get search data");
+
+     $("#search_results").html("");
+
+     searchJSON = pink.marker.values.concat(red.marker.values).concat(blue.marker.values).concat(green.marker.values).concat(yellow.marker.values);
+      //console.log("search JSON: " + searchJSON.length);
+  }
+
+  function doSearch(e)
+  {
+  	results = [];
+
+  // console.log("searching for " + e);
+
+  if (e != "")
+  {
+  	$.each(searchJSON, function(t, n) {
+      // console.log("n: " + n.data.name);
+      var name = n.data.name, nl = name.toLowerCase(), latLng = n.latLng;
+      nl.indexOf(e)!==-1 && results.push([name, latLng]);
+  });
+
+  	printResults();
+  }
+  else
+  {
+  	$("#search_results").html();
+  	results = [];
+  	printResults();
+  }
+}
+
+function printResults()
+{
+	console.log("print results");
+	var e = $("#search_results");
+
+	e.html("");
+
+	e.html(function() {
+		if (results.length == 0)
+		{
+			e.append('<li style="padding-top: 3px; padding-bottom: 3px; color: #999; word-wrap: break-word; white-space: normal">No results found</li>');
+		}
+		else
+		{
+			$.each(results.slice(1, 25), function(t, n) {
+				e.append('<li style="padding-top: 3px; padding-bottom: 3px; color: #999; word-wrap: break-word; white-space: normal" latLng="[' + n[1] + ']">' + n[0] + '</li>');
+			});
+		}
+	});
+
+	$("#search_results > li").click(function(){
+		console.log("clicked: " + $(this).text() + " " + $(this).attr("latLng"));
+		var mark = {data: {name: $(this).text()}, latLng: $(this).attr("latLng")};
+		
+		//var marker = $(this).text();
+		console.log("mark: " + mark);
+		$("#map").gmap3({
+			 clear: true
+		 	/*marker:{
+			    latLng:mark.attr("latlng"),
+			    data:mark.text(),
+			    options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}
+			    //options: {animation: google.maps.Animation.BOUNCE}
+		   }*/
+		 });
+
+		$("#map").gmap3({
+		 	marker:mark /*,
+			    options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}*/
+			    //options: {animation: google.maps.Animation.BOUNCE}
+		   
+		 });
+	});
+}
+
+    // Show the dropdown menu as long as there are characters in the text field
+    function checkTextField()
+    {
+        // If the value of id search_input is not empty show id search_results otherwise hide it
+        if ($('#search_input').val() != '')
+        {
+        	$('#search_results').show();
+        }
+        else
+        {
+        	$('#search_results').hide();
+        }
+    }
+
+    // Hide the dropdown menu if there is a left mouse click outside of it
+    $(document).mouseup(function (e)
+    {
+    	var container = $("#search_results");
+
+        // if the target of the click isn't the
+        // container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+        	container.hide();
+        }
+    });
+
+    $(document).ready(function() {
+        // Create the search index on page load
+        getSearchJSON();
+
+        // Continually update search results as characters are typed
+        $("#search_input").keyup(function() {
+            // Make search inputs are case insensitive
+            var e = $(this).val().toLowerCase();
+
+//            console.log("typed: " + e);
+            // Do the actual search
+            doSearch(e);
+        });
+    });
