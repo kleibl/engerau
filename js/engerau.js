@@ -88,8 +88,8 @@ var pink = {
 		],
 		tag: "pink",
 		options: {
-			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/pink-dot.png"),
-			
+			// icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/pink-dot.png"),
+			icon: { url: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png'}
 		}, 
 		events: {
 			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
@@ -125,7 +125,8 @@ var red = {
 		],
 		tag: "red",
 		options: {
-			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/red-dot.png")
+			// icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/red-dot.png")
+			icon: { url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'}
 		}, 
 		events: {
 			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
@@ -161,7 +162,8 @@ var blue = {
 		],
 		tag: "blue",
 		options: {
-			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/blue-dot.png")
+			// icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/blue-dot.png")
+			icon: { url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'}
 		}, 
 		events: {
 			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
@@ -215,7 +217,8 @@ var green = {
 		],
 		tag: "green",
 		options: {
-			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/green-dot.png")
+			// icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/green-dot.png")
+			icon: { url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}
 		}, 
 		events: {
 			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
@@ -261,7 +264,8 @@ var yellow = {
 		],
 		tag: "yellow",
 		options: {
-			icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png")
+			// icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png")
+			icon: { url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'}
 		}, 
 		events: {
 			/* mouseover: function(marker, event, context) { showHeaderWindow(this, marker, event, context); }
