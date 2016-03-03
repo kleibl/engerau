@@ -1,19 +1,9 @@
-/* var showHeaderWindow = function(_this, marker, event, context) {
-	var map = $(_this).gmap3("get"),
-	infowindow = $(_this).gmap3({get:{name:"infowindow"}});
-	if (infowindow){
-		infowindow.open(map, marker);
-		infowindow.setContent(markerHeader(context.data));
-	} else {
-		$(_this).gmap3({
-			infowindow:{
-				anchor:marker, 
-				options:{content: markerHeader(context.data)},
-				maxWidth: 200
-			}
-		});
-	}
-}; */
+// global variables
+var searchJSON;
+
+var markerContent = function(data) {
+	return "<h2>" + data.name + "</h2>"+ data.desc;
+};
 
 var showFullWindow = function(_this, marker, event, context) {
 	var map = $(_this).gmap3("get"),
@@ -39,12 +29,9 @@ var closeWindow = function(_this){
 	}
 };
 
+
 var markerHeader = function(data) {
 	return "<h3>" + data.name + "</h3>";
-};
-
-var markerContent = function(data) {
-	return "<h2>" + data.name + "</h2>"+ data.desc;
 };
 
 var pink = {
@@ -284,35 +271,11 @@ function getSearchJSON()
 
      $("#search_results").html("");
 
-     searchJSON = pink.marker.values.concat(red.marker.values).concat(blue.marker.values).concat(green.marker.values).concat(yellow.marker.values);
+     return pink.marker.values.concat(red.marker.values).concat(blue.marker.values).concat(green.marker.values).concat(yellow.marker.values);
       //console.log("search JSON: " + searchJSON.length);
   }
 
-  function doSearch(e)
-  {
-  	results = [];
-
-  // console.log("searching for " + e);
-
-  if (e != "")
-  {
-  	$.each(searchJSON, function(t, n) {
-      // console.log("n: " + n.data.name);
-      var name = n.data.name, nl = name.toLowerCase(), latLng = n.latLng;
-      nl.indexOf(e)!==-1 && results.push([name, latLng]);
-  });
-
-  	printResults();
-  }
-  else
-  {
-  	$("#search_results").html();
-  	results = [];
-  	printResults();
-  }
-}
-
-function printResults()
+function printResults(results)
 {
 	console.log("print results");
 	var e = $("#search_results");
@@ -320,7 +283,7 @@ function printResults()
 	e.html("");
 
 	e.html(function() {
-		if (results.length == 0)
+		if (results.length === 0)
 		{
 			e.append('<li style="padding-top: 3px; padding-bottom: 3px; color: #999; word-wrap: break-word; white-space: normal">No results found</li>');
 		}
@@ -334,9 +297,9 @@ function printResults()
 
 	$("#search_results > li").click(function(){
 		console.log("clicked: " + $(this).text() + " " + $(this).attr("latLng"));
-		var mark = {data: {name: $(this).text()}, latLng: $(this).attr("latLng")};
-		
-		//var marker = $(this).text();
+
+		var mark = {latLng: JSON.parse($(this).attr("latLng")), data: {name: $(this).text()}};
+
 		console.log("mark: " + mark);
 		$("#map").gmap3({
 			 clear: true
@@ -349,19 +312,44 @@ function printResults()
 		 });
 
 		$("#map").gmap3({
-		 	marker:mark /*,
-			    options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}*/
-			    //options: {animation: google.maps.Animation.BOUNCE}
+		 	marker: mark ,
+			    // options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}
+			    options: {animation: google.maps.Animation.BOUNCE}
 		   
 		 });
 	});
+} 
+
+  function doSearch(e)
+  {
+  	var results = [];
+
+  // console.log("searching for " + e);
+
+  if (e !== "")
+  {
+  	$.each(searchJSON, function(t, n) {
+      // console.log("n: " + n.data.name);
+      var name = n.data.name, nl = name.toLowerCase(), latLng = n.latLng;
+      nl.indexOf(e)!==-1 && results.push([name, latLng]);
+  });
+
+  	printResults(results);
+  }
+  else
+  {
+  	$("#search_results").html();
+  	results = [];
+  	printResults(results);
+  }
 }
+
 
     // Show the dropdown menu as long as there are characters in the text field
     function checkTextField()
     {
         // If the value of id search_input is not empty show id search_results otherwise hide it
-        if ($('#search_input').val() != '')
+        if ($('#search_input').val() !== '')
         {
         	$('#search_results').show();
         }
@@ -386,7 +374,7 @@ function printResults()
 
     $(document).ready(function() {
         // Create the search index on page load
-        getSearchJSON();
+        searchJSON = getSearchJSON();
 
         // Continually update search results as characters are typed
         $("#search_input").keyup(function() {
