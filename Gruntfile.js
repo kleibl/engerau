@@ -29,12 +29,12 @@ module.exports = function(grunt) {
 			}
 		},
 
-		/* sass: {
+		sass: {
 			core: {
 				files: {
-					'css/reveal.css': 'css/reveal.scss',
+					'css/engarau.css': 'css/engarau.scss',
 				}
-			},
+			} /*,
 			themes: {
 				files: [
 					{
@@ -45,14 +45,14 @@ module.exports = function(grunt) {
 						ext: '.css'
 					}
 				]
-			}
+			} */
 		}, 
 
 		autoprefixer: {
 			dist: {
 				src: 'css/reveal.css'
 			}
-		}, */
+		},
 
 
 		cssmin: {
@@ -82,7 +82,8 @@ module.exports = function(grunt) {
 					console: false,
 					unescape: false,
 					define: false,
-					exports: false
+					exports: false,
+					"$": false
 				}
 			},
 			files: [ 'Gruntfile.js', 'js/engerau.js' ]
@@ -104,17 +105,17 @@ module.exports = function(grunt) {
 				'map.html',
 				'css/**',
 				'js/**',
-				'kml/**',
 				'**.md'
 			]
 		},
 
 		watch: {
 			options: {
-				livereload: true
+				livereload: true,
+				nospawn: true
 			},
 			js: {
-				files: [ 'Gruntfile.js', 'js/engerau.js' ],
+				files: [ 'Gruntfile.js', 'js/engerau.js', 'js/gmap3.js' ],
 				tasks: 'js'
 			},
 			/* theme: {
@@ -150,16 +151,16 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
 
 	// JS task
-	grunt.registerTask( 'js', [ 'jshint', 'uglify', 'qunit' ] );
+	grunt.registerTask( 'js', [ 'jshint', 'uglify' /*, 'qunit' */] );
 
 	// Theme CSS
 	// grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
 
 	// Core framework CSS
-	grunt.registerTask( 'css-core', [ 'sass:core', 'autoprefixer', 'cssmin' ] );
+	grunt.registerTask( 'css-core', [ /* 'sass:core', */'autoprefixer', 'cssmin' ] );
 
 	// All CSS
-	grunt.registerTask( 'css', [ 'sass', 'autoprefixer', 'cssmin' ] );
+	grunt.registerTask( 'css', [ /* 'sass', */'autoprefixer', 'cssmin' ] );
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
@@ -168,6 +169,6 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
 
 	// Run tests
-	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
+	grunt.registerTask( 'test', [ 'jshint' /*, 'qunit' */] );
 
 };

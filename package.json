@@ -2,7 +2,7 @@
   "name": "engerau.js",
   "version": "0.1.0",
   "description": "Engerau project scripts",
-  "homepage": "http://koduktor.sk",
+  "homepage": "http://www.koduktor.sk",
   "subdomain": "engerau",
   "main": "js/engerau.js",
   "scripts": {
